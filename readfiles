@@ -1,0 +1,38 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Oct  7 11:23:12 2017
+
+@author: jackholder
+"""
+import numpy as np
+import pandas as pd
+import os
+import matplotlib.pyplot as plt
+from mpl_toolkits.axes_grid1 import ImageGrid
+from keras.preprocessing import image
+from keras.applications.vgg16 import preprocess_input, decode_predictions
+
+os.chdir('/Users/jackholder/Documents/Columbia/Big Data & Machine Learning/')
+
+labels = pd.read_csv('labels.csv')
+
+def read_img(img_id, trainortest, size):
+    img = image.load_img('%s/%s.jpg' % (trainortest, img_id), target_size=size)
+    img = image.img_to_array(img)
+    return (img)
+
+img_id = labels['id'][0]
+trainortest = 'train'
+img = read_img(img_id, trainortest,  (224, 224))
+
+fig = plt.figure(1, figsize=(6, 6))
+grid = ImageGrid(fig, 111, nrows_ncols=(1,1), axes_pad=0.05)
+ax = grid[0]
+ax.imshow(img / 255.)
+plt.show()
+
+
+
+# for models
+x = preprocess_input(img.copy())
