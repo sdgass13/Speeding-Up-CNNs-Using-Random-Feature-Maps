@@ -1,23 +1,24 @@
 # neuralnetproject
 Final project for big data and machine learning. 
 
-**Materials:**
+## Materials:
 
-**Neural Net explantaion videos:**
+### Neural Net explantaion videos
 
-Andrew Ng's new deep learning course for coursera (course 1 has basics, course 4 has CNNs):
+*Andrew Ng's* new deep learning course for coursera (course 1 has basics, course 4 has CNNs):
 https://www.coursera.org/specializations/deep-learning?utm_source=gg&utm_medium=sem&campaignid=904733485&adgroupid=43839369503&device=c&keyword=deep%20learning%20andrew%20ng&matchtype=p&network=g&devicemodel=&adpostion=1t1&creativeid=213830597426&hide_mobile_promo&gclid=Cj0KCQjw9uHOBRDtARIsALtCa95-VXzI40NSFaxbPlQ_v2Q_hMrnmhI6XN6J3WDc-Fb2dkYKwHeKXFIaArqVEALw_wcB 
 
-Hugo Larochelle, 90 videos on NNs.. was recommended on quora for beginners:
+*Hugo Larochelle*, 90 videos on NNs.. was recommended on quora for beginners:
 https://www.youtube.com/watch?v=SGZ6BttHMPw&list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH
 
 Columbia's deep learning for computer vision course, week1 homework:
 http://llcao.net/cu-deeplearning15/pdf/try_mnst_small.html 
 
-**The dataset:**
+### The dataset:
+
 http://vision.stanford.edu/aditya86/ImageNetDogs/
 
-**Papers:**
+### Papers
 
 The paper on hashing as a preprocessing step by our very own Krzyzstof Choromanski (and a few other dudes..):
 https://arxiv.org/pdf/1511.05212.pdf
@@ -28,11 +29,12 @@ http://cs231n.stanford.edu/reports/2015/pdfs/fcdh_FinalReport.pdf
 A more advanced paper using CNNs, to classify different datasets, including our dogs:
 https://arxiv.org/pdf/1705.07706.pdf
 
-**Kaggle:**
+### Kaggle
+
 They just launched the stanford dogs as a competition... not entirely relevant for us but may be helpful:
 https://www.kaggle.com/c/dog-breed-identification/kernels
 
-**Full Project Description**
+### Full Project Description
 
 The  goal  of  this  project  is  to  understand  the  influence  of  data  compression  on  the  quality  of  theclassification with the use of the deep neural networks.  The setup is a standard deep neural networkbut with input data preprocessed by the structured gaussian linear projection followed by the signfunctionf.  An example of the structured gaussian projection is the circulant gaussian matrix.
 
