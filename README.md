@@ -27,7 +27,7 @@ http://llcao.net/cu-deeplearning15/pdf/try_mnst_small.html
 
 ### Papers
 
-The paper on hashing as a preprocessing step by our very own Krzyzstof Choromanski (and a few other dudes..):
+The paper on hashing as a preprocessing step by our very own Krzysztof Choromanski (and a few other dudes..):
 https://arxiv.org/pdf/1511.05212.pdf
 
 Stanford dogs CNN, a grad student's final project:
