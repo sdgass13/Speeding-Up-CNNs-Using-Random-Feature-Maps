@@ -1,4 +1,4 @@
-# Hashing as a preprocessing for learning with deep neural net-works
+# Hashing as a preprocessing step for learning with deep neural networks
 
 Final project for big data and machine learning (E8100). 
 
