@@ -66,7 +66,7 @@ for i in range(0, len(mat['file_list'])):
     breed = string.split(l, '/')[-2]
     breed = string.split(breed, '-')[-1]
     l = string.split(l, '/')[-1]
-    l = 'Train' + l
+    l = 'Test' + l
     test_files.append(l)
     breeds.append(breed)
 
