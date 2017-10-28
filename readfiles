@@ -1,0 +1,76 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Oct  7 11:23:12 2017
+
+@author: jackholder
+"""
+import numpy as np
+import pandas as pd
+import os
+import sys
+import string
+import shutil
+import scipy.io
+
+
+os.chdir('/Users/jackholder/Documents/Columbia/Big Data & Machine Learning/')
+
+def getfiles(path):
+    if os.path.isdir(path):
+        for root, dirs, files in os.walk(path):
+            for name in files:
+                yield os.path.join(root, name)
+    else:
+        yield path
+
+d_train = "/Users/jackholder/Documents/Columbia/Big Data & Machine Learning/Train"
+d_test = "/Users/jackholder/Documents/Columbia/Big Data & Machine Learning/Test"
+fromdir = "/Users/jackholder/Documents/Columbia/Big Data & Machine Learning/Images"
+for f in getfiles(fromdir):
+    filename = string.split(f, '/')[-1]
+    if os.path.isfile(d_train+filename):
+        filename = f.replace(fromdir,"",1).replace("/","_")
+    if filename in train_files:
+        shutil.copy(f, d_train+filename)
+    else:
+        shutil.copy(f, d_test+filename)
+
+
+mat = scipy.io.loadmat('/Users/jackholder/Documents/Columbia/Big Data & Machine Learning/train_list.mat')
+
+train_files = []
+breeds = []
+for i in range(0, len(mat['file_list'])):
+    l = mat['file_list'][i][0][0]
+    l.encode('utf-8')
+    breed = string.split(l, '/')[-2]
+    breed = string.split(breed, '-')[-1]
+    l = string.split(l, '/')[-1]
+    l = 'Train' + l
+    train_files.append(l)
+    breeds.append(breed)
+
+train_labels = pd.DataFrame({'id': train_files,
+                             'breed': breeds})
+    
+train_labels.to_csv('/Users/jackholder/Documents/Columbia/Big Data & Machine Learning/train_labels.csv', index = False)
+
+mat = scipy.io.loadmat('/Users/jackholder/Documents/Columbia/Big Data & Machine Learning/test_list.mat')
+
+test_files = []
+breeds = []
+for i in range(0, len(mat['file_list'])):
+    l = mat['file_list'][i][0][0]
+    l.encode('utf-8')
+    breed = string.split(l, '/')[-2]
+    breed = string.split(breed, '-')[-1]
+    l = string.split(l, '/')[-1]
+    l = 'Test' + l
+    test_files.append(l)
+    breeds.append(breed)
+
+test_labels = pd.DataFrame({'id': test_files,
+                             'breed': breeds})
+    
+test_labels.to_csv('/Users/jackholder/Documents/Columbia/Big Data & Machine Learning/test_labels.csv', index = False)
