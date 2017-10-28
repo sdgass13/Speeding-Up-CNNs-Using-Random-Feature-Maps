@@ -1,0 +1,105 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Oct 23 12:22:55 2017
+
+@author: samgass
+"""
+
+import numpy as np
+import seaborn as sns
+import math
+
+#Gaussian Projections
+sns.kdeplot(np.random.randn(1000))
+
+gaus = np.random.randn(62, 20)
+
+for i in range(0,62):
+    sns.kdeplot(gaus[i, :])
+    
+brain = sns.load_dataset('brain_networks') 
+brain = brain.drop(brain.index[0:4])
+brain = brain.drop(brain.columns[0], axis = 1)
+brain = brain[brain.columns].astype(float)
+brain = brain.as_matrix()
+
+for i in range(len(brain)):
+    sns.kdeplot(brain[i, :])
+
+test = 1/math.sqrt(62) * np.dot(brain, gaus)
+
+for i in range(len(test)):
+    sns.kdeplot(test[i, :])
+    
+for i in range(len(test)):
+    sns.kdeplot(brain[i, :])
+
+#Not Manual
+    
+from sklearn.random_projection import johnson_lindenstrauss_min_dim
+
+#Given that we have 1,797 data points, in order to preserve their pairwise 
+#Euclidean distances within a tolerance of 0.1 epsilon, our random projection 
+#matrix should have 6,423 components.
+
+johnson_lindenstrauss_min_dim(1797,eps=0.1)
+
+from sklearn.random_projection import SparseRandomProjection
+from sklearn.svm import LinearSVC
+from sklearn.cross_validation import train_test_split
+from sklearn import metrics
+from sklearn import datasets
+import matplotlib.pyplot as plt
+import numpy as np
+
+accuracies = []
+components = np.int32(np.linspace(2, 64, 20))
+
+digits = datasets.load_digits()
+split = train_test_split(digits.data, digits.target, test_size = 0.3,
+    random_state = 42)
+(trainData, testData, trainTarget, testTarget) = split
+
+model = LinearSVC()
+model.fit(trainData, trainTarget)
+baseline = metrics.accuracy_score(model.predict(testData), testTarget)
+
+
+# loop over the projection sizes
+for comp in components:
+    # create the random projection
+    sp = SparseRandomProjection(n_components = comp)
+    X = sp.fit_transform(trainData)
+ 
+    # train a classifier on the sparse random projection
+    model = LinearSVC()
+    model.fit(X, trainTarget)
+ 
+    # evaluate the model and update the list of accuracies
+    test = sp.transform(testData)
+    accuracies.append(metrics.accuracy_score(model.predict(test), testTarget))
+
+
+# create the figure
+plt.figure()
+plt.suptitle("Accuracy of Sparse Projection on Digits")
+plt.xlabel("# of Components")
+plt.ylabel("Accuracy")
+plt.xlim([2, 64])
+plt.ylim([0, 1.0])
+ 
+# plot the baseline and random projection accuracies
+plt.plot(components, [baseline] * len(accuracies), color = "r")
+plt.plot(components, accuracies)
+
+plt.show()
+
+
+for i in range(len(brain)):
+    sns.kdeplot(trainData[i, :])
+    
+for i in range(len(brain)):
+    sns.kdeplot(X[i, :])
+
+#Hadamard Matrix Transformation
