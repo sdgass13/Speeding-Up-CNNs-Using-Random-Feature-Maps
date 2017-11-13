@@ -1,5 +1,6 @@
-# neuralnetproject
-Final project for big data and machine learning. 
+# Hashing as a preprocessing step for learning with deep neural networks
+
+Final project for big data and machine learning (E8100). 
 
 ## Full Project Description
 
@@ -13,7 +14,7 @@ http://vision.stanford.edu/aditya86/ImageNetDogs/
 
 ## Materials:
 
-### Neural Net explantaion videos
+### Neural Net explanation videos
 
 *Andrew Ng's* new deep learning course for coursera (course 1 has basics, course 4 has CNNs):
 https://www.coursera.org/specializations/deep-learning?utm_source=gg&utm_medium=sem&campaignid=904733485&adgroupid=43839369503&device=c&keyword=deep%20learning%20andrew%20ng&matchtype=p&network=g&devicemodel=&adpostion=1t1&creativeid=213830597426&hide_mobile_promo&gclid=Cj0KCQjw9uHOBRDtARIsALtCa95-VXzI40NSFaxbPlQ_v2Q_hMrnmhI6XN6J3WDc-Fb2dkYKwHeKXFIaArqVEALw_wcB 
@@ -26,7 +27,7 @@ http://llcao.net/cu-deeplearning15/pdf/try_mnst_small.html
 
 ### Papers
 
-The paper on hashing as a preprocessing step by our very own Krzyzstof Choromanski (and a few other dudes..):
+The paper on hashing as a preprocessing step by our very own Krzysztof Choromanski (and a few other dudes..):
 https://arxiv.org/pdf/1511.05212.pdf
 
 Stanford dogs CNN, a grad student's final project:
